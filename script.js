@@ -76,7 +76,7 @@ const canGen = function (sudoku) {
   });
 };
 
-const newSudo = function (emptyCells) {
+const solver = function (emptyCells) {
   for (i = 0; i < emptyCells.length; i++) {
     canGen(sudoku);
     if (emptyCells[i].can[0]) {
@@ -121,7 +121,7 @@ fetch(
     const unsolved = JSON.parse(rawSudoku).response.unsolved;
     console.log("Unsolved: ", unsolved);
     objFiller(unsolved);
-    newSudo(emptyCells);
+    solver(emptyCells);
     present();
   })
   .catch((error) => console.log("error", error));
